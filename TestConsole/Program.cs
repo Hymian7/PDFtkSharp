@@ -14,7 +14,6 @@ namespace TestConsole
 
             Console.WriteLine("Ende");
 
-            Console.ReadLine();
         }
 
         static void Extract()
@@ -49,7 +48,7 @@ namespace TestConsole
 
             Console.WriteLine("Start Merging");
 
-            merger.Merge();
+            if (merger.Merge() == true) { Console.WriteLine("Erfolgreich!"); }
 
         }
     }

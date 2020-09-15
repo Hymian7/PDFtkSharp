@@ -9,24 +9,37 @@ namespace PDFtkSharp
     static class CommandLineExecuter
     {
 
-        public static void Execute(FileInfo file, string args)
+        public static bool Execute(FileInfo file, string args)
         {
-            var proc = new Process
+            using (Process proc = new Process())
             {
-                StartInfo = new ProcessStartInfo
+                proc.StartInfo = new ProcessStartInfo
                 {
                     FileName = file.FullName,
                     Arguments = args,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
+                    RedirectStandardError = true,
                     //Muss wieder auf True gesetzt werden
                     CreateNoWindow = false,
                     //TODO: Check
                     WorkingDirectory = @"D:\Desktop\Debug"
-                }
-            };
+                    };
+            
 
-            proc.Start();
+                proc.Start();
+
+                var errorreader = proc.StandardError;
+                var error = errorreader.ReadToEnd();
+
+                proc.WaitForExit();
+
+                if (proc.ExitCode > 0) throw new Exception("Fehler beim Manipulieren der PDF-Datei\n" + error);
+
+                return true;
+
+
+            }
         }
 
     }

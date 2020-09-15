@@ -22,9 +22,11 @@ namespace PDFtkSharp
         {
             string args = $"{String.Join(" ", InputFiles)} cat output {OutputPath}\\{OutputFileName}";            
 
+            
             CommandLineExecuter.Execute(ExecutablePath, args);
 
             return true;
+            
         }
 
     }
