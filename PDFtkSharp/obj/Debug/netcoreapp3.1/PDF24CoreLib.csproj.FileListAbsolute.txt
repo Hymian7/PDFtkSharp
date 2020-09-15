@@ -1,0 +1,8 @@
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\bin\Debug\netcoreapp3.1\PDF24CoreLib.deps.json
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\bin\Debug\netcoreapp3.1\PDF24CoreLib.dll
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\bin\Debug\netcoreapp3.1\PDF24CoreLib.pdb
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\obj\Debug\netcoreapp3.1\PDF24CoreLib.csprojAssemblyReference.cache
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\obj\Debug\netcoreapp3.1\PDF24CoreLib.AssemblyInfoInputs.cache
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\obj\Debug\netcoreapp3.1\PDF24CoreLib.AssemblyInfo.cs
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\obj\Debug\netcoreapp3.1\PDF24CoreLib.dll
+C:\Users\lukas\Source\Repos\PDF24Core\PDF24CoreLib\obj\Debug\netcoreapp3.1\PDF24CoreLib.pdb

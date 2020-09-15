@@ -1,0 +1,11 @@
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\bin\Debug\netcoreapp3.1\assets\help.txt
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\bin\Debug\netcoreapp3.1\assets\libiconv2.dll
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\bin\Debug\netcoreapp3.1\assets\pdftk.exe
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\bin\Debug\netcoreapp3.1\PDFtkSharp.deps.json
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\bin\Debug\netcoreapp3.1\PDFtkSharp.dll
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\bin\Debug\netcoreapp3.1\PDFtkSharp.pdb
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.csprojAssemblyReference.cache
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.AssemblyInfoInputs.cache
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.AssemblyInfo.cs
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.dll
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.pdb
