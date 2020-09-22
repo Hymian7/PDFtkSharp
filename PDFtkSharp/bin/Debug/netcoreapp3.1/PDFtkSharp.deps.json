@@ -7,8 +7,19 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "PDFtkSharp/1.0.0": {
+        "dependencies": {
+          "CliWrap": "3.2.0"
+        },
         "runtime": {
           "PDFtkSharp.dll": {}
+        }
+      },
+      "CliWrap/3.2.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/CliWrap.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          }
         }
       }
     }
@@ -18,6 +29,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CliWrap/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GoF4RKiMgva9bIBxqgYOcOv2S2+EQkAuQ8hWrF6oz6EUy4TBPS54mJ9VjEtsX8WnuVZw7scXhwqhqfxVEsYFjg==",
+      "path": "cliwrap/3.2.0",
+      "hashPath": "cliwrap.3.2.0.nupkg.sha512"
     }
   }
 }

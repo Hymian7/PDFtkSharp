@@ -29,3 +29,4 @@ D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\TestConsole\obj\Debug\netcor
 D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\TestConsole\obj\Debug\netcoreapp3.1\TestConsole.csproj.CopyComplete
 D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\TestConsole\obj\Debug\netcoreapp3.1\TestConsole.dll
 D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\TestConsole\obj\Debug\netcoreapp3.1\TestConsole.pdb
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\TestConsole\bin\Debug\netcoreapp3.1\CliWrap.dll

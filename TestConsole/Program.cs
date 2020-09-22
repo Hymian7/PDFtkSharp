@@ -1,22 +1,24 @@
 ﻿using System;
+using System.Threading.Tasks;
 using PDFtkSharp;
 
 namespace TestConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Start");
             Console.WriteLine();
-            Merge();
+            //Merge();
+            await Extract();
             
 
             Console.WriteLine("Ende");
 
         }
 
-        static void Extract()
+        static async Task Extract()
         {
             //PDFExtractor extractor = new PDFExtractor(@"D:\Desktop\PDFtk\pdftk.exe");
             PDFExtractor extractor = new PDFExtractor();
@@ -24,21 +26,26 @@ namespace TestConsole
 
             extractor.InputDocument = new System.IO.FileInfo(@"D:\Desktop\Debug\Test.pdf");
             extractor.OutputPath = new System.IO.DirectoryInfo(@"D:\Desktop\Debug\Output");
-            extractor.OutputFileName = "out.pdf";
+            extractor.OutputName = "extracted.pdf";
 
             //extractor.ExtractRange(new int[] { 1, 3, 5, 7, 9 });
 
             Console.WriteLine("Start Extracting");
-            extractor.ExtractRange("1-3 7-end");
+            
+            await extractor.ExtractPagesAsync(new int[] { 99 });
+            //extractor.ExtractRange("1-3 7-end");
+
+            Console.WriteLine("Extracting Finished");
+
 
         }
 
-        static void Merge()
+        static async Task Merge()
         {
 
             PDFMerger merger = new PDFMerger() {
 
-                OutputFileName = "merged.pdf",
+                OutputName = "merged.pdf",
                 OutputPath= new System.IO.DirectoryInfo($"D:\\Desktop\\Debug\\Output\\")
             };
 
@@ -48,7 +55,9 @@ namespace TestConsole
 
             Console.WriteLine("Start Merging");
 
-            if (merger.Merge() == true) { Console.WriteLine("Erfolgreich!"); }
+            await merger.MergeAsync();
+
+            Console.WriteLine("Merging Finished");
 
         }
     }

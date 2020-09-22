@@ -12,10 +12,12 @@ namespace PDFtkSharp
     {
         protected FileInfo ExecutablePath { get; set; }
         public DirectoryInfo OutputPath { get; set; }
+
+        private string _outputName;
         public string OutputName
         {
-            get { return OutputName; }
-            set { if (value.EndsWith(".pdf")) OutputName = value; else OutputName = value + ".pdf"; }
+            get { return _outputName; }
+            set { if (value.Substring(value.Length -4)== ".pdf") _outputName = value; else _outputName = value + ".pdf"; }
         }
 
 

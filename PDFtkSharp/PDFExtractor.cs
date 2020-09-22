@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
+using CliWrap;
+using CliWrap.Buffered;
 
 namespace PDFtkSharp
 {
@@ -33,19 +36,41 @@ namespace PDFtkSharp
         /// Extract a single page or a range of pages out of a PDF file. Note: 1-based.
         /// </summary>
         /// <param name="range">Range can be one range, e.g. 1-5, or multiple ranges with start or end wildcards, e.g. start-5 7-end</param>
-        public void ExtractRange(string range)
+        public async Task ExtractRangeAsync(string range)
         {
-            //runCMD($"-splitByPage '{InputDocument}'");
-            CommandLineExecuter.Execute(ExecutablePath ,$"{InputDocument} cat {range} output {OutputPath}\\{OutputFileName}");
+
+            //CommandLineExecuter.Execute(ExecutablePath ,$"{InputDocument} cat {range} output {OutputPath}\\{OutputName}");
+            try
+            { 
+            var result = await Cli.Wrap(ExecutablePath.FullName).WithArguments($"{InputDocument} cat {range} output {OutputPath}\\{OutputName}").ExecuteBufferedAsync();
+            }
+
+            catch(Exception ex)
+            {
+                throw new PdfManipulatingException(ex.Message);
+            }
+
+
         }
 
         /// <summary>
         /// Extracts the given pages into a new PDF file. Note: 1-based
         /// </summary>
         /// <param name="pages">Can be a single page, e.g. 2, multiple pages, e.g. 1 3 5</param>
-        public void ExtractPages(params int[] pages)
+        public async Task ExtractPagesAsync(params int[] pages)
         {
-            CommandLineExecuter.Execute(ExecutablePath, $"{InputDocument} cat {String.Join(" ", pages)} output {OutputPath}\\{OutputFileName}");
+            //CommandLineExecuter.Execute(ExecutablePath, $"{InputDocument} cat {String.Join(" ", pages)} output {OutputPath}\\{OutputName}");
+
+            try
+            {
+               await Cli.Wrap(ExecutablePath.FullName).WithArguments($"{InputDocument} cat {String.Join(" ", pages)} output {OutputPath}\\{OutputName}").ExecuteBufferedAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw new PdfManipulatingException(ex.Message);
+            }            
+
         }
 
     }

@@ -38,7 +38,6 @@ namespace PDFtkSharp
 
                 return true;
 
-
             }
         }
 

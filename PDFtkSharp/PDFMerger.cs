@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
+using CliWrap;
+using CliWrap.Buffered;
 
 namespace PDFtkSharp
 {
@@ -18,14 +21,23 @@ namespace PDFtkSharp
             InputFiles = new List<FileInfo>();
         }
 
-        public bool Merge()
+        public async Task MergeAsync()
         {
-            string args = $"{String.Join(" ", InputFiles)} cat output {OutputPath}\\{OutputFileName}";            
+            string args = $"{String.Join(" ", InputFiles)} cat output {OutputPath}\\{OutputName}";
 
-            
-            CommandLineExecuter.Execute(ExecutablePath, args);
 
-            return true;
+            //CommandLineExecuter.Execute(ExecutablePath, args);
+
+            try
+            {
+                await Cli.Wrap(ExecutablePath.FullName).WithArguments(args).ExecuteBufferedAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw new PdfManipulatingException(ex.Message, ex);
+            }
+           
             
         }
 
