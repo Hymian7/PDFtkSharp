@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using PDFtkSharp;
 
@@ -11,7 +12,9 @@ namespace TestConsole
             Console.WriteLine("Start");
             Console.WriteLine();
             //Merge();
-            await Extract();
+            //Extract();
+
+            await RotatePages();
             
 
             Console.WriteLine("Ende");
@@ -59,6 +62,18 @@ namespace TestConsole
 
             Console.WriteLine("Merging Finished");
 
+        }
+
+        static async Task RotatePages()
+        {
+            PDFRotator rot = new PDFRotator();
+            rot.InputDocument = new System.IO.FileInfo($"D:\\Desktop\\Debug\\Rotation.pdf");
+
+            Console.WriteLine($"Start rotation at {DateTime.Now.ToLongTimeString()}");
+
+            await rot.RotatePagesAsync(new List<int>() { 1, 3 }, PDFRotator.Rotation.Left);
+
+            Console.WriteLine($"End rotation at {DateTime.Now.ToLongTimeString()}");
         }
     }
 }

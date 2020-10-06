@@ -42,7 +42,7 @@ namespace PDFtkSharp
             //CommandLineExecuter.Execute(ExecutablePath ,$"{InputDocument} cat {range} output {OutputPath}\\{OutputName}");
             try
             { 
-            var result = await Cli.Wrap(ExecutablePath.FullName).WithArguments($"{InputDocument} cat {range} output {OutputPath}\\{OutputName}").ExecuteBufferedAsync();
+            var result = await Cli.Wrap(ExecutablePath.FullName).WithArguments($"\"{InputDocument.FullName}\" cat {range} output \"{OutputPath}\\{OutputName}\"").ExecuteBufferedAsync();
             }
 
             catch(Exception ex)
@@ -63,7 +63,7 @@ namespace PDFtkSharp
 
             try
             {
-               await Cli.Wrap(ExecutablePath.FullName).WithArguments($"{InputDocument} cat {String.Join(" ", pages)} output {OutputPath}\\{OutputName}").ExecuteBufferedAsync();
+               await Cli.Wrap(ExecutablePath.FullName).WithArguments($"\"{InputDocument.FullName}\" cat {String.Join(" ", pages)} output \"{OutputPath}\\{OutputName}\"").ExecuteBufferedAsync();
             }
             catch (Exception ex)
             {

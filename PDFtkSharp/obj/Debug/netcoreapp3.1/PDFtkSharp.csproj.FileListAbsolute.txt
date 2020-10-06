@@ -9,3 +9,4 @@ D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcore
 D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.AssemblyInfo.cs
 D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.dll
 D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.pdb
+D:\Dokumente\Visual Studio 2019\Projects\PDFtkSharp\PDFtkSharp\obj\Debug\netcoreapp3.1\PDFtkSharp.csproj.CoreCompileInputs.cache
