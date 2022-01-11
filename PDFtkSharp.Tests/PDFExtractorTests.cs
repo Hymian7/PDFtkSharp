@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PDFtkSharp;
-using Tesseract;
+using System.IO;
 
 namespace PDFtkSharp.Tests;
 
@@ -11,9 +11,10 @@ namespace PDFtkSharp.Tests;
 public class PDFExtractorTests
 {
 
-    private static string inputFile = @"..\..\..\assets\test.pdf";
-    private static string outputPath = @"..\..\..\assets\output\";
+    private static DirectoryInfo outputPath = new("../../../assets/output");
+    private static FileInfo inputFile = new("../../../assets/test.pdf");
 
+    
     [TestMethod]
     [DataRow(1)]
     [DataRow(2)]
@@ -29,16 +30,16 @@ public class PDFExtractorTests
     {
         //Arrange
         string outputName = $"extracted-page-{value}.pdf";
-        if(System.IO.File.Exists(System.IO.Path.Combine(outputPath, outputName)))
+        if(System.IO.File.Exists(System.IO.Path.Combine(outputPath.FullName, outputName)))
         {
-            Debug.WriteLine("Deleting file " +System.IO.Path.Combine(outputPath, outputName) );
-            System.IO.File.Delete(System.IO.Path.Combine(outputPath, outputName));
+            Debug.WriteLine("Deleting file " +System.IO.Path.Combine(outputPath.FullName, outputName) );
+            System.IO.File.Delete(System.IO.Path.Combine(outputPath.FullName, outputName));
         }
 
         PDFExtractor ext = new();
-        ext.InputDocument = new System.IO.FileInfo(inputFile);
+        ext.InputDocument = new System.IO.FileInfo(inputFile.FullName);
         ext.OutputName = outputName;
-        ext.OutputPath = new System.IO.DirectoryInfo(outputPath);
+        ext.OutputPath = new System.IO.DirectoryInfo(outputPath.FullName);
 
         //Act
         Debug.WriteLine($"Extracting page {value} from {inputFile} to {System.IO.Path.Combine(ext.OutputPath.FullName, ext.OutputName)}");
@@ -62,9 +63,9 @@ public class PDFExtractorTests
 
 
         PDFExtractor ext = new();
-        ext.InputDocument = new System.IO.FileInfo(inputFile);
+        ext.InputDocument = new System.IO.FileInfo(inputFile.FullName);
         ext.OutputName = outputName;
-        ext.OutputPath = new System.IO.DirectoryInfo(outputPath);
+        ext.OutputPath = new System.IO.DirectoryInfo(outputPath.FullName);
 
         //Act
         Debug.WriteLine($"Trying to extract page {value} from {inputFile} to {System.IO.Path.Combine(ext.OutputPath.FullName, ext.OutputName)}");
@@ -77,10 +78,9 @@ public class PDFExtractorTests
     [ClassCleanup]
     public static void DeleteAllOutputFiles()
     {
-        foreach(var file in System.IO.Directory.GetFiles(outputPath))
+        foreach(var file in outputPath.GetFiles())
         {
-            var fi = new System.IO.FileInfo(file);
-            fi.Delete();
+            file.Delete();
         }
     }
 }
