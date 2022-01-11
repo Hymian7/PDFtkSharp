@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PDFtkSharp
 {
-    class PdfManipulatingException : Exception
+    public class PdfManipulatingException : Exception
     {
         public PdfManipulatingException() : base()
         { }
