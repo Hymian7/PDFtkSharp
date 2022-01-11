@@ -68,9 +68,9 @@ namespace PDFtkSharp
         }
 
         /// <summary>
-        /// Use this constructor to provide an alternative .exe file
+        /// Use this constructor to provide an alternative path for the pdftk executable
         /// </summary>
-        /// <param name="_exePath">Full Path to PDFtk Server EXE</param>
+        /// <param name="_exePath">Full Path to PDFtk executable</param>
         public PDFManipulator(FileInfo _exePath)
         {
             //Check if executable path exists. Otherwise throw exception

@@ -42,7 +42,16 @@ namespace PDFtkSharp
             //CommandLineExecuter.Execute(ExecutablePath ,$"{InputDocument} cat {range} output {OutputPath}\\{OutputName}");
             try
             { 
-            var result = await Cli.Wrap(ExecutablePath.FullName).WithArguments($"\"{InputDocument.FullName}\" cat {range} output \"{OutputPath}\\{OutputName}\"").ExecuteBufferedAsync();
+                var result = await Cli.Wrap(ExecutablePath.FullName).WithArguments($"\"{InputDocument.FullName}\" cat {range} output \"{OutputPath}\\{OutputName}\" verbose").ExecuteBufferedAsync();
+                if(result.ExitCode!=0)
+                {
+                    throw new PdfManipulatingException(result.StandardError);
+                }
+                else
+                {
+                    Debug.WriteLine(result.StandardOutput);
+                    Debug.Write("Execution finished at " + result.ExitTime + " after running for " + result.RunTime);
+                }
             }
 
             catch(Exception ex)
@@ -59,16 +68,39 @@ namespace PDFtkSharp
         /// <param name="pages">Can be a single page, e.g. 2, multiple pages, e.g. 1 3 5</param>
         public async Task ExtractPagesAsync(params int[] pages)
         {
-            //CommandLineExecuter.Execute(ExecutablePath, $"{InputDocument} cat {String.Join(" ", pages)} output {OutputPath}\\{OutputName}");
-
             try
             {
-               await Cli.Wrap(ExecutablePath.FullName).WithArguments($"\"{InputDocument.FullName}\" cat {String.Join(" ", pages)} output \"{OutputPath}\\{OutputName}\"").ExecuteBufferedAsync();
+                // pdftk C:\Folder\input.pdf cat 1 2 3 4 output C:\Folder\output.pdf verbose
+                var result = await Cli.Wrap(ExecutablePath.FullName)
+                    .WithArguments(args => args
+                        
+                        .Add($"\"{InputDocument.FullName}\"", false)
+                        .Add("cat")
+                        .Add(String.Join(" ", pages))
+                        .Add("output")
+                        .Add($"\"{Path.Join(OutputPath.FullName, OutputName)}\"", false)
+                        .Add("verbose"))
+                    .WithValidation(CommandResultValidation.None)
+                    .ExecuteBufferedAsync();
+
+               if(result.ExitCode != 0)
+               {
+                   Debug.WriteLine(result.StandardOutput);
+                   Debug.WriteLine(result.StandardError);
+                   throw new PdfManipulatingException(result.StandardError);
+               }
+               
+               else
+               {
+                    Debug.WriteLine(result.StandardOutput);
+                    Debug.WriteLine("Execution finished at " + result.ExitTime + " after running for " + result.RunTime);
+               }
+               
+
             }
             catch (Exception ex)
             {
-
-                throw new PdfManipulatingException(ex.Message);
+                throw new PdfManipulatingException("Error while wrapping the command with CliWrap:" + ex.Message, ex);
             }            
 
         }
