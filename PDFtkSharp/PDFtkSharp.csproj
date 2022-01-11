@@ -1,16 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>PDFtkSharp</AssemblyName>
     <RootNamespace>PDFtkSharp</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="assets\help.txt" />
-    <None Remove="assets\libiconv2.dll" />
-    <None Remove="assets\pdftk.exe" />
-  </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="assets\help.txt">
@@ -25,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CliWrap" Version="3.2.0" />
+    <PackageReference Include="CliWrap" Version="3.4.0" />
   </ItemGroup>
 
 </Project>
