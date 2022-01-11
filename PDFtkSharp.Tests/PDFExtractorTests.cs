@@ -14,7 +14,7 @@ public class PDFExtractorTests
     private static DirectoryInfo outputPath = new("../../../assets/output");
     private static FileInfo inputFile = new("../../../assets/test.pdf");
 
-    [ClassSetup]
+    [ClassInitialize]
     public static void CreateOutputDirectory()
     {
         if(!outputPath.Exists) outputPath.Create();
