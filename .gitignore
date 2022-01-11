@@ -341,3 +341,6 @@ healthchecksdb
 
 #VS Code configuration
 .vscode/
+
+#VS configuration
+.vs
