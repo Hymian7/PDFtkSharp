@@ -21,6 +21,15 @@ namespace PDFtkSharp
             set { if (value.Substring(value.Length -4)== ".pdf") _outputName = value; else _outputName = value + ".pdf"; }
         }
 
+        public FileInfo OutputFile
+        {
+            get { return new FileInfo(Path.Combine(OutputPath.FullName, OutputName)); }
+            set { 
+                    OutputPath = value.Directory;
+                    OutputName = value.Name;
+                }
+        }
+
 
 
         /// <summary>

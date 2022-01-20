@@ -43,13 +43,13 @@ public class PDFExtractorTests
         }
 
         PDFExtractor ext = new();
-        ext.InputDocument = new System.IO.FileInfo(inputFile.FullName);
+        ext.InputFile = new System.IO.FileInfo(inputFile.FullName);
         ext.OutputName = outputName;
         ext.OutputPath = new System.IO.DirectoryInfo(outputPath.FullName);
 
         //Act
         Debug.WriteLine($"Extracting page {value} from {inputFile} to {System.IO.Path.Combine(ext.OutputPath.FullName, ext.OutputName)}");
-        Task.WaitAll(ext.ExtractPagesAsync(value));
+        Task.WaitAll(ext.ExtractAsync(value));
 
          
         //Assert
@@ -69,16 +69,41 @@ public class PDFExtractorTests
 
 
         PDFExtractor ext = new();
-        ext.InputDocument = new System.IO.FileInfo(inputFile.FullName);
+        ext.InputFile = new System.IO.FileInfo(inputFile.FullName);
         ext.OutputName = outputName;
         ext.OutputPath = new System.IO.DirectoryInfo(outputPath.FullName);
 
         //Act
         Debug.WriteLine($"Trying to extract page {value} from {inputFile} to {System.IO.Path.Combine(ext.OutputPath.FullName, ext.OutputName)}");
-        await ext.ExtractPagesAsync(value);
+        await ext.ExtractAsync(value);
 
          
         //Assert
+    }
+
+    [TestMethod]
+    [DataRow(1)]
+    [DataRow(2)]
+    [DataRow(3)]
+    [DataRow(4)]
+    [DataRow(5)]
+    [DataRow(6)]
+    [DataRow(7)]
+    [DataRow(8)]
+    [DataRow(9)]
+    [DataRow(10)]
+    public async Task ExtractSinglePage_WithFluentAPI(int value)
+    {
+        var outputName = $"fluent-{value}.pdf";
+
+        await PDFExtractor
+                .WithInputFile(inputFile)
+                .WithOutputPath(outputPath)
+                .WithOutputName(outputName)
+                .AddPage(value)
+                .ExtractAsync();
+
+        Assert.IsTrue(File.Exists(Path.Combine(outputPath.FullName, outputName)));
     }
 
     [ClassCleanup]
@@ -88,5 +113,7 @@ public class PDFExtractorTests
         {
             file.Delete();
         }
+
+        outputPath.Delete();
     }
 }

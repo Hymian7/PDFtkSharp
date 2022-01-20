@@ -27,7 +27,7 @@ namespace TestConsole
             PDFExtractor extractor = new PDFExtractor();
 
 
-            extractor.InputDocument = new System.IO.FileInfo(@"D:\Desktop\Debug\Test.pdf");
+            extractor.InputFile = new System.IO.FileInfo(@"D:\Desktop\Debug\Test.pdf");
             extractor.OutputPath = new System.IO.DirectoryInfo(@"D:\Desktop\Debug\Output");
             extractor.OutputName = "extracted.pdf";
 
@@ -35,7 +35,7 @@ namespace TestConsole
 
             Console.WriteLine("Start Extracting");
             
-            await extractor.ExtractPagesAsync(new int[] { 99 });
+            await extractor.ExtractAsync(new int[] { 99 });
             //extractor.ExtractRange("1-3 7-end");
 
             Console.WriteLine("Extracting Finished");
