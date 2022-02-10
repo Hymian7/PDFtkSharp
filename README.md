@@ -4,6 +4,10 @@ C# Wrapper around PDFLabs PDFtk Server CLI
 Also check out https://www.pdflabs.com/tools/pdftk-server/
 and https://github.com/Tyrrrz/CliWrap
 
+# Download
+
+📦[Download on Nuget](https://www.nuget.org/packages/PDFtkSharp) `dotnet add package PdfTkSharp`
+
 # Usage
 
 ## Extract Pages from PDF
