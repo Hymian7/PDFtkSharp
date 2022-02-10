@@ -1,6 +1,8 @@
 using System.IO;
 
-namespace PDFtkSharp.Interfaces.PDFExtractor;
+namespace PDFtkSharp.Interfaces.PDFExtractor
+
+{
 
 public interface ICanAddOutput
 {
@@ -9,4 +11,6 @@ public interface ICanAddOutput
     public ICanAddPagesOrRun WithOutputFile(FileInfo outputFile);
     public ICanAddPagesOrRun WithOutputFile(string outputFile);
     
+}
+
 }

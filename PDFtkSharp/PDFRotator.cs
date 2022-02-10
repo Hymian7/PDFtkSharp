@@ -1,11 +1,8 @@
 ﻿using CliWrap;
 using CliWrap.Buffered;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -155,7 +152,7 @@ namespace PDFtkSharp
 
                 if (File.Exists(InputDocument.FullName + ".old"))
                 {
-                    File.Move(InputDocument.FullName + ".old", InputDocument.FullName, true);
+                    File.Move(InputDocument.FullName + ".old", InputDocument.FullName);
                 }
                 if (File.Exists(InputDocument.FullName+appendix))
                 {

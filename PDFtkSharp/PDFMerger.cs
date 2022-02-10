@@ -32,7 +32,7 @@ namespace PDFtkSharp
 
             try
             {
-                StringBuilder inputFilesCombined = new();
+                StringBuilder inputFilesCombined = new StringBuilder();
 
                 foreach(var file in InputFiles)
                 {
