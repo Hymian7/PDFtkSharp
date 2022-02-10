@@ -14,7 +14,7 @@ and https://github.com/Tyrrrz/CliWrap
 
 ### Classic
 
-```
+```csharp
 PDFExtractor ext = new PDFExtractor();
 
 ext.InputFile = new System.IO.FileInfo("path/to/input/file.pdf");
@@ -26,7 +26,7 @@ await ext.ExtractAsync(1,3,4,5);
 
 ### Fluent
 
-```
+```csharp
 await PDFExtractor
       .WithInputFile("path/to/input/file.pdf")
       .WithOutputPath("path/to/output")
@@ -42,7 +42,7 @@ await PDFExtractor
 
 ### Classic
 
-```
+```csharp
 PDFMerger merger = new();
 
 merger.InputFiles = new List<FileInfo>()    {
