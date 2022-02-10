@@ -4,6 +4,14 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>PDFtkSharp</AssemblyName>
     <RootNamespace>PDFtkSharp</RootNamespace>
+    <PackageId>PDFtkSharp</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Hymian7 - Lukas Möller</Authors>
+    <Description>C# Wrapper around PDFLabs PDFtk Server CLI</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Hymian7/PDFtkSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Hymian7/PDFtkSharp.git</RepositoryUrl>
+    <RespositoryType>git</RespositoryType>
   </PropertyGroup>
 
   <ItemGroup>
