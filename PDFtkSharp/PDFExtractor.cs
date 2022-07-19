@@ -77,7 +77,7 @@ namespace PDFtkSharp
                         
                         .Add($"\"{InputFile.FullName}\"", false)
                         .Add("cat")
-                        .Add(String.Join(" ", _ranges))
+                        .Add(String.Join(' ', _ranges), false)
                         .Add("output")
                         .Add($"\"{Path.Join(OutputPath.FullName, OutputName)}\"", false)
                         .Add("verbose"))
