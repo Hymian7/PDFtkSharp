@@ -9,71 +9,22 @@ namespace TestConsole
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Start");
-            Console.WriteLine();
-            //Merge();
-            //Extract();
-
-            await RotatePages();
-            
-
-            Console.WriteLine("Ende");
-
-        }
-
-        static async Task Extract()
-        {
-            //PDFExtractor extractor = new PDFExtractor(@"D:\Desktop\PDFtk\pdftk.exe");
-            PDFExtractor extractor = new PDFExtractor();
-
-
-            extractor.InputFile = new System.IO.FileInfo(@"D:\Desktop\Debug\Test.pdf");
-            extractor.OutputPath = new System.IO.DirectoryInfo(@"D:\Desktop\Debug\Output");
-            extractor.OutputName = "extracted.pdf";
-
-            //extractor.ExtractRange(new int[] { 1, 3, 5, 7, 9 });
-
-            Console.WriteLine("Start Extracting");
-            
-            await extractor.ExtractAsync(new int[] { 99 });
-            //extractor.ExtractRange("1-3 7-end");
-
-            Console.WriteLine("Extracting Finished");
-
-
-        }
-
-        static async Task Merge()
-        {
-
-            PDFMerger merger = new PDFMerger() {
-
-                OutputName = "merged.pdf",
-                OutputPath= new System.IO.DirectoryInfo($"D:\\Desktop\\Debug\\Output\\")
+            PDFExtractor ext = new PDFExtractor()
+            {
+                InputFile = new System.IO.FileInfo("D:\\Downloads\\The-Sustainable-Development-Goals-Report-2021.pdf"),
+                OutputPath = new System.IO.DirectoryInfo("D:\\Desktop"),
+                OutputName = "00000002.pdf"
             };
 
-            merger.InputFiles.Add(new System.IO.FileInfo($"D:\\Desktop\\Debug\\1.pdf"));
-            merger.InputFiles.Add(new System.IO.FileInfo($"D:\\Desktop\\Debug\\2.pdf"));
-            merger.InputFiles.Add(new System.IO.FileInfo($"D:\\Desktop\\Debug\\3.pdf"));
+            int[] pages = new int[68];
 
-            Console.WriteLine("Start Merging");
+            for (int i = 0; i < 68; i++)
+            {
+                pages[i] = i+1;
+            }
 
-            await merger.MergeAsync();
+            await ext.ExtractAsync(pages);
 
-            Console.WriteLine("Merging Finished");
-
-        }
-
-        static async Task RotatePages()
-        {
-            PDFRotator rot = new PDFRotator();
-            rot.InputDocument = new System.IO.FileInfo($"D:\\Desktop\\Debug\\Rotation.pdf");
-
-            Console.WriteLine($"Start rotation at {DateTime.Now.ToLongTimeString()}");
-
-            await rot.RotatePagesAsync(new List<int>() { 1, 3 }, PDFRotator.Rotation.Left);
-
-            Console.WriteLine($"End rotation at {DateTime.Now.ToLongTimeString()}");
         }
     }
 }
